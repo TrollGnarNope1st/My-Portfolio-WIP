@@ -9,6 +9,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ADDED MISSING VARIABLES FOR THE NEW THEME */
+        :root {
+            --accent-cyan: #00d4ff;
+            --accent-purple: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0a0a0f;
+            --white: #e0e0e0;
+            --text-muted: #888888;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            cursor: none; /* Hides the default computer mouse */
+        }
+
+        a, button {
+            cursor: none; /* Ensures links also hide default mouse */
+        }
+
+        /* --- CUSTOM CURSOR CSS --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none; /* Lets you click "through" the cursor */
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-purple);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Active hover state for cursor */
+        .cursor-outline.hovering {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(108, 99, 255, 0.1);
+        }
+        /* ------------------------- */
+
         .back-btn-top {
             position: fixed;
             top: 20px;
@@ -37,16 +93,33 @@
             padding-top: 100px;
             max-width: 900px;
             margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .project-header {
             margin-bottom: 3rem;
+            text-align: center;
         }
 
         .project-title {
             font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
             color: var(--white);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; /* Fallback */
+        }
+
+        .pre-title {
+            color: var(--accent-cyan);
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            font-size: 1rem;
         }
 
         .media-container {
@@ -93,24 +166,39 @@
         .details-card p {
             margin-bottom: 2rem;
             font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Disable custom cursor on mobile devices */
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            body, a, button { cursor: auto; }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
-    <!-- Particle Background -->
-    <canvas id="particleCanvas"></canvas>
 
     <a href="index.html#projects" class="back-btn-top">← Back to Projects</a>
 
     <main class="container section-padding">
         <div class="project-detail-content reveal">
             <div class="project-header">
-                <h1 class="project-title gradient-text">Arduino Mobile Robot</h1>
                 <p class="pre-title">IT Elective Project | Group Activity</p>
+                <h1 class="project-title gradient-text">Arduino Mobile Robot</h1>
             </div>
 
             <div class="media-container">
@@ -127,26 +215,3 @@
                 <h3>Source Code Snippet</h3>
                 <div class="code-block">
                     <pre>
-// Arduino Code Placeholder
-void setup() {
-  Serial.begin(9600);
-  // Initialize motor pins here
-}
-
-void loop() {
-  // Main control logic
-  Serial.println("Robot is running...");
-  delay(1000);
-}
-                    </pre>
-                </div>
-
-                <h3>Learning Outcomes</h3>
-                <p>Through this workshop, we gained hands-on experience in circuit design, motor control logic, and collaborative engineering. The robot successfully demonstrated mobility and responsiveness during the final presentation.</p>
-            </div>
-        </div>
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
