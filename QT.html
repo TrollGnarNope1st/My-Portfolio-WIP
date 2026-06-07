@@ -9,6 +9,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ADDED MISSING VARIABLES FOR THE NEW THEME */
+        :root {
+            --accent-cyan: #00d4ff;
+            --accent-purple: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0a0a0f;
+            --white: #e0e0e0;
+            --text-muted: #888888;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            cursor: none; /* Hides the default computer mouse */
+        }
+
+        a, button {
+            cursor: none; /* Ensures links also hide default mouse */
+        }
+
+        /* --- CUSTOM CURSOR CSS --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none; /* Lets you click "through" the cursor */
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-purple);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Active hover state for cursor */
+        .cursor-outline.hovering {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(108, 99, 255, 0.1);
+        }
+        /* ------------------------- */
+
         .back-btn-top {
             position: fixed;
             top: 20px;
@@ -37,16 +93,33 @@
             padding-top: 100px;
             max-width: 900px;
             margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .project-header {
             margin-bottom: 3rem;
+            text-align: center;
         }
 
         .project-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 0.5rem;
             color: var(--white);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .pre-title {
+            color: var(--accent-cyan);
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            font-size: 1rem;
         }
 
         .project-image-container {
@@ -81,10 +154,14 @@
         .details-card p {
             margin-bottom: 2rem;
             font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .features-list {
             list-style: none;
+            padding: 0;
+            color: var(--text-muted);
         }
 
         .features-list li {
@@ -101,23 +178,35 @@
             color: var(--accent-purple);
             font-size: 1.2rem;
         }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Disable custom cursor on mobile devices */
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            body, a, button { cursor: auto; }
+        }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
-    <!-- Particle Background -->
-    <canvas id="particleCanvas"></canvas>
 
     <a href="index.html#projects" class="back-btn-top">← Back to Projects</a>
 
     <main class="container section-padding">
         <div class="project-detail-content reveal">
             <div class="project-header">
-                <h1 class="project-title gradient-text">Quest Tracker</h1>
                 <p class="pre-title">Capstone Project | 2024</p>
+                <h1 class="project-title gradient-text">Quest Tracker</h1>
             </div>
 
             <div class="project-image-container">
@@ -128,7 +217,7 @@
                 <h3>About the Project</h3>
                 <p>Quest Tracker is a parent/child task monitoring application designed to bridge the gap between household responsibilities and positive reinforcement. It allows parents to assign tasks to their children and monitor their progress in real-time.</p>
                 
-                <h3>Key Features</h3>
+                <h3 style="margin-top: 2.5rem;">Key Features</h3>
                 <ul class="features-list">
                     <li>Task Assignment and Real-time Tracking</li>
                     <li>Reward System Integration for Physical Incentives</li>
@@ -140,5 +229,34 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+        // Trigger reveal animation instantly when this specific page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+            
+            // --- CUSTOM CURSOR LOGIC ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Move the dot instantly
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Move the outline (you could add a delay here with animate() but direct assignment is smoothest)
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            });
+
+            // Add hover effect when mousing over links/buttons
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+            });
+        });
+    </script>
 </body>
 </html>
