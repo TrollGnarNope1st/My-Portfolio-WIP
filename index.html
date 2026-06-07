@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GnarNope - Portfolio</title>
+    <title>Jesrel Cuambot | GnarNope Portfolio</title>
+
+    <!-- Meta Tags for Social Sharing -->
+    <meta name="description" content="Portfolio of Jesrel Cuambot - 4th Year IT Student & Aspiring Developer">
+    <meta property="og:title" content="Jesrel Cuambot | GnarNope Portfolio">
+    <meta property="og:description" content="Explore my projects, skills, and workshops.">
+    <meta property="og:image" content="./pfp.png">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,151 +19,193 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="#home"><span>01.</span> Home</a></li>
-            <li><a href="#about"><span>02.</span> About</a></li>
-            <li><a href="#projects"><span>03.</span> Projects</a></li>
-            <li><a href="#workshops"><span>04.</span> Workshops</a></li>
-            <li><a href="#contact"><span>05.</span> Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <main class="container">
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
 
-        <section id="home">
-            <div class="home-content reveal">
-                <img src="./pfp.png" alt="Your Profile Picture" class="profile-pic">
-                <p class="intro-text" style="color: var(--accent-color); font-family: 'Courier New', Courier, monospace; margin-bottom: 1rem;">Hi, my name is</p>
-                <h1>Jesrel Cuambot.</h1>
-                <p>I'm a 4th Year IT Student specializing in Software Development and IT Solutions.</p>
-            </div>
-            <div class="scroll-down">
-                <a href="#about"><span></span>Scroll Down</a>
-            </div>
-        </section>
-
-        <section id="about">
-            <div class="content-wrapper">
-                <h2 class="reveal"><span>01.</span> About Me</h2>
-                <div class="about-text reveal">
-                    <p>
-                        I am a passionate and driven Information Technology student at STI WNU University, 
-                        specializing in web and software development. I have a solid foundation in programming principles,
-                        database management, and networking. I am eager to apply my skills to solve real-world problems and 
-                        contribute to innovative projects.
-                    </p>
-                    
-                    <p style="margin-top: 1rem;">Here are a few technologies I've been working with recently:</p>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="#home" class="logo">GC<span>.</span></a>
+                <div class="menu-btn">
+                    <div class="menu-btn__burger"></div>
                 </div>
-                
-                <div class="skills-grid reveal">
-                    <div class="skill-category">
-                        <h3>Languages</h3>
-                        <ul>
-                            <li>HTML & CSS</li>
-                            <li>JavaScript</li>
-                            <li>Python</li>
-                            <li>Java</li>
-                            <li>SQL</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frameworks & Tools</h3>
-                        <ul>
-                            <li>Git & GitHub</li>
-                            <li>VS Code</li>
-                            <li>Figma</li>
-                            <li>MySQL</li>
-                            <li>Node.js</li>
-                        </ul>
-                    </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#workshops">Workshops</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content reveal">
+                <div class="profile-container">
+                    <img src="./pfp.png" alt="Jesrel Cuambot" class="profile-pic">
+                </div>
+                <p class="pre-title">Hi, my name is</p>
+                <h1 class="gradient-text">Jesrel Cuambot.</h1>
+                <h2 class="typewriter-text" data-text='["4th Year IT Student", "Aspiring Software Developer", "Aspiring IT Specialist"]'></h2>
+                <div class="scroll-indicator">
+                    <a href="#about">
+                        <span></span>
+                        <p>Scroll Down</p>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="projects">
-             <div class="content-wrapper">
-                <h2 class="reveal"><span>02.</span> Some Things I've Built</h2>
-                <div class="project-grid">
-                    <div class="project-card reveal">
-                        <img src="./QT.png" alt="QT project ScreenShot">
-                        <h3>Quest Tracker - (Capstone)</h3>
-                        <p>A parent/Child task monitoring as it allows the parent to know if the child is doing task by giving a certain physical rewards if completed</p>
-                        <div class="project-links">
-                            <a href="./QT.html" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-card reveal">
-                         <video controls>
-                            <source src="wew.mp4" type="video/mp4">
-                         </video>
-                        <h3>IT elective Robot (Arduino)</h3>
-                        <p>A group Activity Using Arduino uno to create a Mobile Robot (MOBOT)</p>
-                        <div class="project-links">
-                            <a href="Arduino.html" target="_blank">View Code</a>
-                            <a href="robot.mp4" target="_blank">View Montage</a>
+        <section id="about" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal"><span>01.</span> About Me</h2>
+                <div class="about-grid reveal">
+                    <div class="about-text">
+                        <p>
+                            I am a passionate and driven Information Technology student at STI WNU University, 
+                            specializing in web and software development. I have a solid foundation in programming principles,
+                            database management, and networking. I am eager to apply my skills to solve real-world problems and 
+                            contribute to innovative projects.
+                        </p>
+                        <p>Here are a few technologies I've been working with recently:</p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">HTML5 & CSS3</span>
+                            <span class="skill-tag">JavaScript (ES6+)</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Git & GitHub</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">MySQL</span>
                         </div>
                     </div>
                 </div>
-            </div>     
+            </div>
         </section>
 
-        <section id="workshops">
-             <div class="content-wrapper">
-                <h2 class="reveal"><span>03.</span> Workshops & Highlights</h2>
+        <section id="projects" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal"><span>02.</span> Projects</h2>
                 <div class="project-grid">
                     <div class="project-card reveal">
-                        <img src="digitalarts.png">
-                        <h3>Multimedia - DigitalArts</h3>
-                        <p>An simple workshop Accomplished in STI WNU using Photoshop</p>
+                        <div class="card-image">
+                            <img src="./QT.png" alt="Quest Tracker Screenshot">
+                            <div class="card-overlay">
+                                <a href="./QT.html" target="_blank" class="cta-btn">View Details</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Quest Tracker (Capstone)</h3>
+                            <p>A parent/child task monitoring application that incentivizes responsibility through rewards.</p>
+                            <div class="card-tags">
+                                <span>Web Development</span>
+                                <span>Monitoring</span>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="project-card reveal">
-                         <img src="valoran.png" >
-                        <h3>Valorant God - Gold Max Peak</h3>
-                        <p>Skinner | Pro | RK | Shadow | Pro²</p>
-                    </div>   
-                    <div class="project-card reveal">
-                         <img src="lol.png" >
-                        <h3>League of legends - LVL 861</h3>
-                        <p>6 Ultimate Skins | 25 Mythic Skins | 90 Legendary Skins | 257 Epic Skins | 310 Normal Skins | 235 Legacy Skns</p>
-                    </div>   
-                    
-                    <div class="project-card reveal">
-                         <img src="apex.png" >
-                        <h3>Apex Legends - Gaming</h3>
-                        <p>only gaming w/ skills</p>
-                    </div>  
+                        <div class="card-image">
+                            <video muted loop onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
+                                <source src="wew.mp4" type="video/mp4">
+                            </video>
+                            <div class="card-overlay">
+                                <a href="Arduino.html" target="_blank" class="cta-btn">View Code</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>IT Elective Robot</h3>
+                            <p>A group activity creating a Mobile Robot (MOBOT) using Arduino Uno.</p>
+                            <div class="card-tags">
+                                <span>Arduino</span>
+                                <span>Robotics</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <div class="content-wrapper">
-                <h2 class="reveal"><span>04.</span> Get In Touch</h2>
-                <p class="reveal">I'm currently looking for internship opportunities! Feel free to send me a message.</p>
-                
-             <form
-  class="contact-form reveal"
-  id="contactForm"
-  action="https://formspree.io/f/mkgzpvne"
-  method="POST"
->  <input type="email" id="email" name="email" placeholder="Your Email" required>
-  <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-  <div id="status"></div>
-  <button type="submit">Send Message</button>
-</form>
-
-                <div class="social-links reveal">
-                    <p>Or find me here:</p>
-                    <a href="mailto:jesrelc21@gmail.com">Gmail</a>
-                    <span> | </span>
-                    <a href="https://github.com/GnarNope">GitHub</a>
+        <section id="workshops" class="section-padding">
+            <div class="container">
+                <h2 class="section-title reveal"><span>03.</span> Workshops & Hobbies</h2>
+                <div class="hobby-grid">
+                    <div class="hobby-card reveal" style="--i: 1">
+                        <img src="digitalarts.png" alt="Digital Arts">
+                        <div class="hobby-info">
+                            <h3>Multimedia Arts</h3>
+                            <p>Photoshop workshop projects at STI WNU.</p>
+                        </div>
+                    </div>
+                    <div class="hobby-card reveal" style="--i: 2">
+                        <img src="valoran.png" alt="Valorant">
+                        <div class="hobby-info">
+                            <h3>Valorant</h3>
+                            <p>Gold Max Peak | Competitive Gaming</p>
+                        </div>
+                    </div>
+                    <div class="hobby-card reveal" style="--i: 3">
+                        <img src="lol.png" alt="League of Legends">
+                        <div class="hobby-info">
+                            <h3>League of Legends</h3>
+                            <p>LVL 861 | Skin Collector</p>
+                        </div>
+                    </div>
+                    <div class="hobby-card reveal" style="--i: 4">
+                        <img src="apex.png" alt="Apex Legends">
+                        <div class="hobby-info">
+                            <h3>Apex Legends</h3>
+                            <p>Casual Gaming & Skill Mastery</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="contact-wrapper reveal">
+                    <h2 class="section-title"><span>04.</span> Get In Touch</h2>
+                    <p class="contact-desc">I'm currently looking for internship opportunities! My inbox is always open.</p>
+
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mkgzpvne" method="POST">
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <div id="status"></div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <div class="ripple"></div>
+                        </button>
+                    </form>
+
+                    <div class="social-links">
+                        <a href="mailto:jesrelc21@gmail.com" class="social-icon">Email</a>
+                        <a href="https://github.com/GnarNope" target="_blank" class="social-icon">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <button id="backToTop" title="Go to top">↑</button>
+
+    <footer>
+        <p>Built with &hearts; by Jesrel Cuambot &copy; 2025</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
