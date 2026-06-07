@@ -3,82 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arduino Project - Jesrel Cuambot</title>
+    <title>Arduino Robot | Jesrel Cuambot</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-        }
-        .code-container {
-            background: var(--bg-alt);
-            color: var(--text-main);
-            padding: 1.5rem;
-            border-radius: 4px;
-            text-align: left;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 2rem;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent-color);
+        .back-btn-top {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
             text-decoration: none;
+            color: var(--accent-cyan);
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
             font-weight: 600;
-            font-family: 'Courier New', Courier, monospace;
             transition: var(--transition);
         }
-        .back-link:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+
+        .back-btn-top:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
         }
-        h1 {
-            color: var(--white-color);
+
+        .project-detail-content {
+            padding-top: 100px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        video {
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            box-shadow: var(--shadow);
+
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .media-container {
+            width: 100%;
+            margin-bottom: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #000;
+        }
+
+        .media-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .code-block {
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-cyan);
+            margin-bottom: 3rem;
+        }
+
+        .details-card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .details-card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .details-card p {
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
-    <main class="container">
-        <section>
-            <div class="content-wrapper">
-                <h1>IT Elective Robot (Arduino)</h1>
-                <p>A group activity using Arduino Uno to create a Mobile Robot (MOBOT).</p>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <a href="index.html#projects" class="back-btn-top">← Back to Projects</a>
+
+    <main class="container section-padding">
+        <div class="project-detail-content reveal">
+            <div class="project-header">
+                <h1 class="project-title gradient-text">Arduino Mobile Robot</h1>
+                <p class="pre-title">IT Elective Project | Group Activity</p>
+            </div>
+
+            <div class="media-container">
+                <video controls>
+                    <source src="robot.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="details-card">
+                <h3>Project Overview</h3>
+                <p>A group activity using Arduino Uno to create a fully functional Mobile Robot (MOBOT). This project focused on integrating hardware components with C++ based Arduino programming to achieve autonomous or remote-controlled movement.</p>
                 
-                <div class="code-container">
+                <h3>Source Code Snippet</h3>
+                <div class="code-block">
                     <pre>
 // Arduino Code Placeholder
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
+  // Initialize motor pins here
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Main control logic
   Serial.println("Robot is running...");
   delay(1000);
 }
                     </pre>
                 </div>
 
-                <div class="project-links" style="margin-top: 2rem;">
-                    <video controls style="max-width: 100%; height: auto; border-radius: 8px;">
-                        <source src="robot.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-
-                <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+                <h3>Learning Outcomes</h3>
+                <p>Through this workshop, we gained hands-on experience in circuit design, motor control logic, and collaborative engineering. The robot successfully demonstrated mobility and responsiveness during the final presentation.</p>
             </div>
-        </section>
+        </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
