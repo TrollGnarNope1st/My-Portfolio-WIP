@@ -13,21 +13,22 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#workshops">workshops</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home"><span>01.</span> Home</a></li>
+            <li><a href="#about"><span>02.</span> About</a></li>
+            <li><a href="#projects"><span>03.</span> Projects</a></li>
+            <li><a href="#workshops"><span>04.</span> Workshops</a></li>
+            <li><a href="#contact"><span>05.</span> Contact</a></li>
         </ul>
     </nav>
 
     <main class="container">
 
         <section id="home">
-            <div class="home-content">
+            <div class="home-content reveal">
                 <img src="./pfp.png" alt="Your Profile Picture" class="profile-pic">
-                <h1>Jesrel Cuambot</h1>
-                <p>4th Year IT Student | Aspiring Software Developer | Aspiring IT Specialist</p>
+                <p class="intro-text" style="color: var(--accent-color); font-family: 'Courier New', Courier, monospace; margin-bottom: 1rem;">Hi, my name is</p>
+                <h1>Jesrel Cuambot.</h1>
+                <p>I'm a 4th Year IT Student specializing in Software Development and IT Solutions.</p>
             </div>
             <div class="scroll-down">
                 <a href="#about"><span></span>Scroll Down</a>
@@ -36,16 +37,19 @@
 
         <section id="about">
             <div class="content-wrapper">
-                <h2>About Me</h2>
-                <p class="about-text">
-                    I am a passionate and driven Information Technology student at STI WNU University, 
-                    specializing in web and software development. I have a solid foundation in programming principles,
-                    database management, and networking. I am eager to apply my skills to solve real-world problems and 
-                    contribute to innovative projects.
-                </p>
+                <h2 class="reveal"><span>01.</span> About Me</h2>
+                <div class="about-text reveal">
+                    <p>
+                        I am a passionate and driven Information Technology student at STI WNU University, 
+                        specializing in web and software development. I have a solid foundation in programming principles,
+                        database management, and networking. I am eager to apply my skills to solve real-world problems and 
+                        contribute to innovative projects.
+                    </p>
+                    
+                    <p style="margin-top: 1rem;">Here are a few technologies I've been working with recently:</p>
+                </div>
                 
-                <h2>My Skills</h2>
-                <div class="skills-grid">
+                <div class="skills-grid reveal">
                     <div class="skill-category">
                         <h3>Languages</h3>
                         <ul>
@@ -72,19 +76,19 @@
 
         <section id="projects">
              <div class="content-wrapper">
-                <h2>My Projects</h2>
+                <h2 class="reveal"><span>02.</span> Some Things I've Built</h2>
                 <div class="project-grid">
-                    <div class="project-card">
+                    <div class="project-card reveal">
                         <img src="./QT.png" alt="QT project ScreenShot">
                         <h3>Quest Tracker - (Capstone)</h3>
                         <p>A parent/Child task monitoring as it allows the parent to know if the child is doing task by giving a certain physical rewards if completed</p>
                         <div class="project-links">
-                            <a href="./QT.html" target="QT-pie">interested? View More</a>
+                            <a href="./QT.html" target="_blank">View Project</a>
                         </div>
                     </div>
-                    <div class="project-card">
-                         <video  width="320" height="240" controls>
-                         <source src="wew.mp4" type="video/mp4">
+                    <div class="project-card reveal">
+                         <video controls>
+                            <source src="wew.mp4" type="video/mp4">
                          </video>
                         <h3>IT elective Robot (Arduino)</h3>
                         <p>A group Activity Using Arduino uno to create a Mobile Robot (MOBOT)</p>
@@ -92,61 +96,66 @@
                             <a href="Arduino.html" target="_blank">View Code</a>
                             <a href="robot.mp4" target="_blank">View Montage</a>
                         </div>
-                </div>     
+                    </div>
+                </div>
+            </div>     
         </section>
 
         <section id="workshops">
              <div class="content-wrapper">
-                <h2>University workshops</h2>
+                <h2 class="reveal"><span>03.</span> Workshops & Highlights</h2>
                 <div class="project-grid">
-                    <div class="project-card">
+                    <div class="project-card reveal">
                         <img src="digitalarts.png">
-                        <h3>Multimedia - DigitlaArts</h3>
+                        <h3>Multimedia - DigitalArts</h3>
                         <p>An simple workshop Accomplished in STI WNU using Photoshop</p>
-    
                     </div>
-                    <div class="project-card">
+                    <div class="project-card reveal">
                          <img src="valoran.png" >
                         <h3>Valorant God - Gold Max Peak</h3>
                         <p>Skinner | Pro | RK | Shadow | Pro²</p>
-                </div>   
-                <div class="project-card">
+                    </div>   
+                    <div class="project-card reveal">
                          <img src="lol.png" >
                         <h3>League of legends - LVL 861</h3>
                         <p>6 Ultimate Skins | 25 Mythic Skins | 90 Legendary Skins | 257 Epic Skins | 310 Normal Skins | 235 Legacy Skns</p>
-                </div>   
-                
-                 <div class="project-card">
+                    </div>   
+                    
+                    <div class="project-card reveal">
                          <img src="apex.png" >
-                        <h3>Apex Legends - wala lang</h3>
+                        <h3>Apex Legends - Gaming</h3>
                         <p>only gaming w/ skills</p>
-                </div>  
+                    </div>  
+                </div>
+            </div>
         </section>
 
         <section id="contact">
             <div class="content-wrapper">
-                <h2>Get In Touch</h2>
-                <p>I'm currently looking for internship opportunities! Feel free to send me a message.</p>
+                <h2 class="reveal"><span>04.</span> Get In Touch</h2>
+                <p class="reveal">I'm currently looking for internship opportunities! Feel free to send me a message.</p>
                 
              <form
-  class="contact-form"
+  class="contact-form reveal"
   id="contactForm"
   action="https://formspree.io/f/mkgzpvne"
   method="POST"
 >  <input type="email" id="email" name="email" placeholder="Your Email" required>
   <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+  <div id="status"></div>
   <button type="submit">Send Message</button>
 </form>
 
-                <div class="social-links">
+                <div class="social-links reveal">
                     <p>Or find me here:</p>
-                    <a href=mailto:“jesrelc21@gmail.com”>Gmail</a>
-                    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1"> | </a>
+                    <a href="mailto:jesrelc21@gmail.com">Gmail</a>
+                    <span> | </span>
                     <a href="https://github.com/GnarNope">GitHub</a>
                 </div>
             </div>
         </section>
 
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

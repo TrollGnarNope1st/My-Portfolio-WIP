@@ -3,10 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="style.css"></script>
+    <title>Arduino Project - Jesrel Cuambot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+        .code-container {
+            background: var(--bg-alt);
+            color: var(--text-main);
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: left;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            transition: var(--transition);
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        h1 {
+            color: var(--white-color);
+        }
+        video {
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            box-shadow: var(--shadow);
+        }
+    </style>
 </head>
 <body>
-    
+    <main class="container">
+        <section>
+            <div class="content-wrapper">
+                <h1>IT Elective Robot (Arduino)</h1>
+                <p>A group activity using Arduino Uno to create a Mobile Robot (MOBOT).</p>
+                
+                <div class="code-container">
+                    <pre>
+// Arduino Code Placeholder
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println("Robot is running...");
+  delay(1000);
+}
+                    </pre>
+                </div>
+
+                <div class="project-links" style="margin-top: 2rem;">
+                    <video controls style="max-width: 100%; height: auto; border-radius: 8px;">
+                        <source src="robot.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

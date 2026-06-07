@@ -3,22 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quest Tracker - Jesrel Cuambot</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+        h1, h3 {
+            color: var(--white-color);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            transition: var(--transition);
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        .project-details {
+            text-align: left;
+            margin-top: 2rem;
+        }
+        .project-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            list-style: none;
+        }
+        ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
     <main class="container">
-     <section id="home">
-            <div class="home-content">
-                <img src="./pfp.png" alt="Your Profile Picture" class="profile-pic">
-                <h1>Jesrel Cuambot</h1>
-                <p>4th Year IT Student | Aspiring Software Developer | Aspiring IT Specialist</p>
-            </div>
-            <div class="scroll-down">
-                <a href="#about"><span></span>Scroll Down</a>
+        <section>
+            <div class="content-wrapper">
+                <h1>Quest Tracker (Capstone)</h1>
+                <img src="./QT.png" alt="Quest Tracker Screenshot" class="project-image">
+                
+                <div class="project-details">
+                    <h3>About the Project</h3>
+                    <p>Quest Tracker is a parent/child task monitoring application. It allows parents to assign tasks to their children and monitor their progress. Children are rewarded with physical rewards upon completion of tasks, encouraging responsibility and positive behavior.</p>
+                    
+                    <h3 style="margin-top: 1.5rem;">Key Features</h3>
+                    <ul>
+                        <li>Task Assignment and Tracking</li>
+                        <li>Reward System Integration</li>
+                        <li>Real-time Progress Monitoring</li>
+                        <li>User-friendly interface for both parents and children</li>
+                    </ul>
+                </div>
+
+                <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
             </div>
         </section>
     </main>
