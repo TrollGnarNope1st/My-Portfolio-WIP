@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Tracker | Jesrel Cuambot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ADDED MISSING VARIABLES FOR THE NEW THEME */
+        :root {
+            --accent-cyan: #00d4ff;
+            --accent-purple: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0a0a0f;
+            --white: #e0e0e0;
+            --text-muted: #888888;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            cursor: none; /* Hides the default computer mouse */
+        }
+
+        a, button {
+            cursor: none; /* Ensures links also hide default mouse */
+        }
+
+        /* --- CUSTOM CURSOR CSS --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none; /* Lets you click "through" the cursor */
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-purple);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Active hover state for cursor */
+        .cursor-outline.hovering {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(108, 99, 255, 0.1);
+        }
+        /* ------------------------- */
+
+        .back-btn-top {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            text-decoration: none;
+            color: var(--accent-cyan);
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-btn-top:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-detail-content {
+            padding-top: 100px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .pre-title {
+            color: var(--accent-cyan);
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            font-size: 1rem;
+        }
+
+        .project-image-container {
+            width: 100%;
+            margin-bottom: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .project-image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .details-card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .details-card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .details-card p {
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            color: var(--text-muted);
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .features-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Disable custom cursor on mobile devices */
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            body, a, button { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <a href="index.html#projects" class="back-btn-top">← Back to Projects</a>
+
+    <main class="container section-padding">
+        <div class="project-detail-content reveal">
+            <div class="project-header">
+                <p class="pre-title">Mobile Project Commision | 2026</p>
+                <h1 class="project-title gradient-text">DSite - Phone Rental</h1>
+            </div>
+
+            <div class="project-image-container">
+                <img src="./test.png" alt="Rental App Screenshot">
+            </div>
+
+            <div class="details-card">
+                <h3>About the Project</h3>
+                <p>DSite - Phone Rental is a robust device management system designed to streamline the process of renting smartphones. It features real-time monitoring, remote locking capabilities, and automated kiosk timers to enhance user experience and operational efficiency.</p>
+
+    <h3 style="margin-top: 2.5rem;">Admin Web Features</h3>
+<ul class="features-list">
+    <li>Real-time Fleet Dashboard to monitor device status, battery, and connectivity</li>
+    <li>Remote Hardware Control (Instantly lock/unlock screens and block settings)</li>
+    <li>Automated Rental Timer Management with an integrated daily earnings ledger</li>
+    <li>Live Screen Mirroring via WebRTC for remote viewing and troubleshooting</li>
+    <li>Granular App Management (Remotely hide or suspend specific apps per device)</li>
+</ul>
+
+<h3 style="margin-top: 1.5rem;">Android Client Features</h3>
+<ul class="features-list">
+    <li>Hardware-level Kiosk Mode (Natively disables navigation gestures and buttons)</li>
+    <li>Bulletproof Background Watchdog to prevent bypassing or uninstallation</li>
+    <li>Deep System Integrations (Overlays, usage tracking, and battery optimization bypass)</li>
+    <li>Low-power background loop for offline survival and instant command execution</li>
+</ul>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Trigger reveal animation instantly when this specific page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+            
+            // --- CUSTOM CURSOR LOGIC ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Move the dot instantly
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Move the outline (you could add a delay here with animate() but direct assignment is smoothest)
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            });
+
+            // Add hover effect when mousing over links/buttons
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+            });
+        });
+    </script>
+</body>
+</html>
