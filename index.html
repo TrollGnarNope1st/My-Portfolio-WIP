@@ -212,21 +212,23 @@
                     <h2 class="section-title"><span>04.</span> Get In Touch</h2>
                     <p class="contact-desc">I'm currently looking for internship opportunities! My inbox is always open.</p>
 
-                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mkgzpvne" method="POST">
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Email Address</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <div id="status"></div>
-                        <button type="submit" class="submit-btn">
-                            <span>Send Message</span>
-                            <div class="ripple"></div>
-                        </button>
-                    </form>
+<form class="contact-form" id="contactForm" action="https://formspree.io/f/mkgzpvne" method="POST">
+    <div class="form-group">
+        <input type="email" id="email" name="email" placeholder=" " required>
+        <label for="email">Email Address</label>
+    </div>
+    <div class="form-group">
+        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+        <label for="message">Your Message</label>
+    </div>
+    
+    <div id="status" style="margin: 10px 0; font-size: 0.9rem;"></div>
+    
+    <button type="submit" id="submitBtn" class="submit-btn">
+        <span>Send Message</span>
+        <div class="ripple"></div>
+    </button>
+</form>
 
                     <div class="social-links">
                         <a href="mailto:jesrelc21@gmail.com" class="social-icon">Email</a>
