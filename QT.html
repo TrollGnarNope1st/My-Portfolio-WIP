@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ADDED MISSING VARIABLES FOR THE NEW THEME */
         :root {
             --accent-cyan: #00d4ff;
             --accent-purple: #6c63ff;
@@ -26,11 +25,11 @@
             color: var(--white);
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            cursor: none; /* Hides the default computer mouse */
+            cursor: none;
         }
 
         a, button {
-            cursor: none; /* Ensures links also hide default mouse */
+            cursor: none;
         }
 
         /* --- CUSTOM CURSOR CSS --- */
@@ -41,7 +40,7 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             z-index: 9999;
-            pointer-events: none; /* Lets you click "through" the cursor */
+            pointer-events: none;
         }
 
         .cursor-dot {
@@ -57,13 +56,11 @@
             transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
 
-        /* Active hover state for cursor */
         .cursor-outline.hovering {
             width: 60px;
             height: 60px;
             background-color: rgba(108, 99, 255, 0.1);
         }
-        /* ------------------------- */
 
         .back-btn-top {
             position: fixed;
@@ -98,7 +95,7 @@
         }
 
         .project-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
@@ -122,19 +119,86 @@
             font-size: 1rem;
         }
 
-        .project-image-container {
-            width: 100%;
+        /* --- LOGO 100x100 --- */
+        .logo-container {
+            text-align: center;
             margin-bottom: 3rem;
-            border-radius: 16px;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* --- SLIDER CSS --- */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
             overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 4rem;
+            background: var(--surface);
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .project-image-container img {
-            width: 100%;
-            display: block;
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain; /* Ensures whole image fits inside */
+            background: #000;
+        }
+
+        .slide-description {
+            padding: 1.5rem 2rem;
+            text-align: center;
+            margin: 0;
+            color: var(--white);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 40%; /* Places arrows over the image, not the text */
+            transform: translateY(-50%);
+            background: rgba(10, 10, 15, 0.7);
+            color: var(--accent-cyan);
+            border: 1px solid var(--glass-border);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+        /* ------------------ */
 
         .details-card {
             background: var(--surface);
@@ -188,11 +252,110 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* --- DOWNLOAD SECTION CSS --- */
+.download-section {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-bottom: 3rem; /* Spaces it out before the Details Card */
+    text-align: center;
+}
+
+.download-section h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.download-section p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+    color: var(--bg-dark);
+    padding: 12px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    border: none;
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+    color: var(--bg-dark);
+}
+/* --- SLIDER IMAGE CLICK EFFECT --- */
+.slide img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.slide img:hover {
+    transform: scale(1.02);
+}
+
+/* --- LIGHTBOX MODAL CSS --- */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 10, 15, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+.modal-view-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    animation: zoomEffect 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+.modal-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: var(--accent-cyan);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-close-btn:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+@keyframes zoomEffect {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
         
-        /* Disable custom cursor on mobile devices */
         @media (max-width: 768px) {
             .cursor-dot, .cursor-outline { display: none; }
             body, a, button { cursor: auto; }
+            .slider-btn { display: none; } /* Hide buttons on mobile to encourage swiping */
         }
     </style>
 </head>
@@ -204,14 +367,90 @@
 
     <main class="container section-padding">
         <div class="project-detail-content reveal">
+            
             <div class="project-header">
                 <p class="pre-title">Capstone Project | 2024</p>
                 <h1 class="project-title gradient-text">Quest Tracker</h1>
             </div>
 
-            <div class="project-image-container">
-                <img src="./QT.png" alt="Quest Tracker Screenshot">
+            <div class="logo-container">
+                <img src="./QT.png" alt="Quest Tracker Logo">
             </div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    
+                    <div class="slide">
+                        <img src="./QT-Showcase/Dashboard.jpg" alt="Dashboard Parent">
+                        <p class="slide-description">This is the main dashboard where parents can monitor daily activities and pending tasks.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/DashboardC.jpg" alt="Screenshot 2">
+                        <p class="slide-description">This is the main dashboard where the child can view their progress and tasks.</p>
+                    </div>
+                    
+                    <div class="slide">
+                        <img src="./QT-Showcase/EditQuest.jpg" alt="Screenshot 3">
+                        <p class="slide-description">this is the page where the parent can edit quests.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/EditQuiz.jpg" alt="Screenshot 3">
+                        <p class="slide-description">this is the page where the parent can edit quizzes.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/LeaderboardsMonthly.jpg" alt="Screenshot 3">
+                        <p class="slide-description">Monthly leaderboards to encourage friendly competition among children.</p>
+                    </div>
+                    
+                    <div class="slide">
+                        <img src="./QT-Showcase/Quest.jpg" alt="Screenshot 3">
+                        <p class="slide-description">This is the page where the child can view and manage their quests.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/QuizSee.jpg" alt="Screenshot 3">
+                        <p class="slide-description">This is the page where the child can view and manage their quizzes.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/Rwearsd.jpg" alt="Screenshot 3">
+                        <p class="slide-description">This is the page where the child can view their rewards.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/TaskHistory.jpg" alt="Screenshot 3">
+                        <p class="slide-description">This is the page where the Parent can view their  child task history.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="./QT-Showcase/Zone.jpg" alt="Screenshot 3">
+                        <p class="slide-description">This is the page where the parent can see the latest / current location of the assigned child.</p>
+                    </div>
+                </div>
+                
+                <button class="slider-btn prev-btn">&#10094;</button>
+                <button class="slider-btn next-btn">&#10095;</button>
+            </div>
+
+            <div class="download-section reveal">
+    <h3>Want to try the application?</h3>
+    <p>Experience Quest Tracker firsthand by downloading the Android application. </p>
+    <p>(Side note) : the application  Zone feature is currently in development. and doesn't work because lack of funds</p>
+    
+    <a href="/QT-Showcase/QT-app.apk" download="QuestTracker.apk" class="download-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download APK
+    </a>
+    <br> <br>
+    <p>Interested in becoming a partner? <strong>Contact me at: Jesrelc21@gmail.com | QT-Partnership</strong></p>
+</div>
 
             <div class="details-card">
                 <h3>About the Project</h3>
@@ -230,9 +469,34 @@
 
     <script src="script.js"></script>
     <script>
-        // Trigger reveal animation instantly when this specific page loads
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+
+        // --- LIGHTBOX MODAL LOGIC ---
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalTargetImg");
+            const closeBtn = document.querySelector(".modal-close-btn");
+            const sliderImages = document.querySelectorAll(".slide img");
+
+            // Open modal when an image is clicked
+            sliderImages.forEach(img => {
+                img.addEventListener("click", function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Close modal when the X is clicked
+            closeBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            // Close modal if the user clicks the dark background outside the image
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
             
             // --- CUSTOM CURSOR LOGIC ---
             const cursorDot = document.querySelector('.cursor-dot');
@@ -241,22 +505,57 @@
             window.addEventListener('mousemove', (e) => {
                 const posX = e.clientX;
                 const posY = e.clientY;
-
-                // Move the dot instantly
                 cursorDot.style.left = `${posX}px`;
                 cursorDot.style.top = `${posY}px`;
-
-                // Move the outline (you could add a delay here with animate() but direct assignment is smoothest)
                 cursorOutline.style.left = `${posX}px`;
                 cursorOutline.style.top = `${posY}px`;
             });
 
-            // Add hover effect when mousing over links/buttons
             document.querySelectorAll('a, button').forEach(el => {
                 el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
                 el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
             });
+
+            // --- SLIDER LOGIC ---
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentIndex = 0;
+
+            function updateSlider() {
+                sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                updateSlider();
+            });
+
+            // --- MOBILE SWIPE LOGIC ---
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            sliderWrapper.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            sliderWrapper.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) nextBtn.click(); // Swipe Left
+                if (touchEndX > touchStartX + 50) prevBtn.click(); // Swipe Right
+            });
         });
     </script>
+    <div id="imageModal" class="custom-modal">
+    <span class="modal-close-btn">&times;</span>
+    <img class="modal-view-content" id="modalTargetImg" alt="Expanded View">
+</div>
 </body>
 </html>
